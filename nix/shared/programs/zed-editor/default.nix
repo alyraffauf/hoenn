@@ -31,13 +31,6 @@ _: {
               provider = "openrouter";
             };
 
-            default_model = {
-              effort = "xhigh";
-              enable_thinking = true;
-              model = "deepseek-v4-flash-free";
-              provider = "opencode-zen";
-            };
-
             default_profile = "write";
             dock = "left";
             expand_edit_card = false;
@@ -51,36 +44,9 @@ _: {
             tool_permissions.default = "allow";
           };
 
-          agent_servers = {
-            claude-acp = {
-              default_config_options = {
-                mode = "bypassPermissions";
-                model = "opus";
-              };
-
-              type = "registry";
-            };
-
-            codex-acp = {
-              default_config_options.mode = "auto";
-              type = "registry";
-            };
-
-            opencode = {
-              default_config_options = {
-                effort = "max";
-                mode = "build";
-                model = "opencode-go/glm-5.2";
-              };
-
-              favorite_config_option_values.model = ["opencode-go/deepseek-v4-pro"];
-              type = "registry";
-            };
-          };
-
           allow_rewrap = "anywhere";
           auto_indent_on_paste = true;
-          auto_install_extensions.one-dark-pro = true;
+          auto_install_extensions.catppuccin = true;
           autosave.after_delay.milliseconds = 1000;
           bottom_dock_layout = "left_aligned";
           buffer_font_family = "CaskaydiaCove Nerd Font";
@@ -102,7 +68,7 @@ _: {
           icon_theme = {
             dark = "Zed (Default)";
             light = "Zed (Default)";
-            mode = "light";
+            mode = "dark";
           };
 
           languages.Python.language_servers = ["ty" "ruff"];
@@ -137,9 +103,9 @@ _: {
           };
 
           theme = {
-            dark = "One Dark";
+            dark = "Catppuccin Frappé - No Italics";
             light = "One Light";
-            mode = "light";
+            mode = "dark";
           };
 
           title_bar = {
