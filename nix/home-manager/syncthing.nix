@@ -89,6 +89,18 @@ _: {
     options.hoenn.syncthing = {
       enable = mkEnableOption "Syncthing with Hoenn's shared folders";
 
+      cert = mkOption {
+        type = types.nullOr types.str;
+        default = null;
+        description = "Path to this host's Syncthing certificate.";
+      };
+
+      key = mkOption {
+        type = types.nullOr types.str;
+        default = null;
+        description = "Path to this host's Syncthing private key.";
+      };
+
       devices = mkOption {
         type = types.attrsOf deviceType;
 
@@ -140,9 +152,15 @@ _: {
           assertion = !(cfg.folders.sync.enable && cfg.folders.roms.enable && cfg.folders.sync.path == cfg.folders.roms.path);
           message = "hoenn.syncthing folders.sync and folders.roms must use different paths.";
         }
+        {
+          assertion = (cfg.cert == null) == (cfg.key == null);
+          message = "hoenn.syncthing cert and key must be configured together.";
+        }
       ];
 
       services.syncthing = {
+        inherit (cfg) cert key;
+
         enable = true;
         overrideDevices = false;
         overrideFolders = false;
