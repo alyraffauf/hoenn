@@ -17,7 +17,6 @@
         self.nixosModules.gnome
         self.nixosModules.homebrew
         self.nixosModules.tailscale
-        self.nixosModules.thermald
         self.nixosModules.wireguardHoenn
       ];
 

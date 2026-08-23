@@ -17,7 +17,6 @@
         self.nixosModules.hermesWebui
         self.nixosModules.niri
         self.nixosModules.tailscale
-        self.nixosModules.thermald
         self.nixosModules.wireguardHoenn
       ];
 
