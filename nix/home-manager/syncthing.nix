@@ -91,14 +91,14 @@ _: {
 
       devices = mkOption {
         type = types.attrsOf deviceType;
+
         default = {
-          eterna.id = "ZAD2MVO-I2OQII4-C3T756B-BEBQMM6-Q4ILH2H-5CR3TMI-DR4VBFD-GLRVOQK";
-          jubilife = {
-            id = "52MTCMC-PKEWSAU-HADMTZU-DY5EKFO-B323P7V-OBXLNTQ-EJY7F7Y-EUWFBQX";
+          petalburg = {
+            id = "dO75EK2H-YBXPM5D-PBYV7XB-DJKFL3E-OFZBB7H-MLCD2UT-NXQRMDG-BTZZQQH";
             introducer = true;
           };
-          snowpoint.id = "TFSZWZB-EDIFV2P-333APP2-T655TM4-2XGA7QA-P22Z36W-3RNGX2C-DLETAQ7";
         };
+
         description = "Syncthing peers available to the managed folders.";
       };
 
@@ -107,7 +107,8 @@ _: {
           type = folderType {
             path = "~/Sync";
             id = "default";
-            devices = ["eterna" "jubilife" "snowpoint"];
+            devices = ["petalburg"];
+
             versioning = {
               type = "trashcan";
               params.cleanoutDays = "5";
@@ -121,9 +122,10 @@ _: {
           type = folderType {
             path = "~/ROMs";
             id = "emudeck";
-            devices = ["eterna" "jubilife"];
+            devices = ["petalburg"];
             ignorePatterns = ["androidapps" "emulators"];
           };
+
           default = {};
           description = "Configuration for the shared ROMs folder.";
         };
