@@ -1,5 +1,5 @@
 _: {
-  flake.nixosModules.pacifidlog = {self, ...}: {
+  flake.nixosModules.petalburg = {self, ...}: {
     home-manager.users.aly = {
       imports = [self.homeModules.syncthing];
 
