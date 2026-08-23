@@ -23,9 +23,6 @@
         enable = true;
         group = "aly";
         hermesHome = "/home/aly/.hermes";
-        host = "0.0.0.0";
-        openFirewall = true;
-        port = 8787;
         stateDir = "/home/aly/.hermes/webui";
         user = "aly";
 

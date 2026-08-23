@@ -15,6 +15,7 @@
     sootopolis = "10.254.1.4";
     fallarbor = "10.254.1.6";
     pacifidlog = "10.254.1.7";
+    petalburg = "10.254.1.8";
   };
 in {
   options.flake.darwinModules.wireguardHoenn = lib.mkOption {
