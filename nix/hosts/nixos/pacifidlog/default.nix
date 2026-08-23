@@ -13,6 +13,7 @@
       self.nixosModules.default
       self.nixosModules.pacifidlog
       self.nixosModules.aly
+      self.nixosModules.hermesWebui
       self.nixosModules.niri
       self.nixosModules.tailscale
       self.nixosModules.thermald
