@@ -93,6 +93,8 @@ _: {
         type = types.attrsOf deviceType;
 
         default = {
+          pacifidlog.id = "PHKZH2R-X5Q3BHI-H7PH3WS-CLNO225-7TUFZMK-RR6VMJ2-PCRB67N-R7JCHAM";
+
           petalburg = {
             id = "dO75EK2H-YBXPM5D-PBYV7XB-DJKFL3E-OFZBB7H-MLCD2UT-NXQRMDG-BTZZQQH";
             introducer = true;
