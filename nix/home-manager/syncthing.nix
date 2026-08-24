@@ -111,6 +111,9 @@ _: {
             id = "D5L7KFC-42MKO3W-NIFNTLW-46WFMMY-OQGS3EY-G4GAHHC-YWVYUZD-RQBLVAA";
             introducer = true;
           };
+
+          rustboro.id = "Q3BYZ3A-OGKMJBC-DUKGOIY-DDESNHE-ZIML3NO-R6IM5XD-3BAVKZJ-GPSNDA7";
+          sootopolis.id = "2CQCVEL-IMFSTTU-IN65JHW-WST2WEH-2N3XMDR-HESNEMH-WNSQK36-CLGV3AX";
         };
 
         description = "Syncthing peers available to the managed folders.";
@@ -121,7 +124,7 @@ _: {
           type = folderType {
             path = "~/Sync";
             id = "default";
-            devices = ["petalburg"];
+            devices = ["pacifidlog" "petalburg" "rustboro" "sootopolis"];
 
             versioning = {
               type = "trashcan";
