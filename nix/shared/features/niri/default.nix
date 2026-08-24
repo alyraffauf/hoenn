@@ -12,6 +12,7 @@ _: {
         pkgs.gnome-disk-utility
         pkgs.gnome-text-editor
         pkgs.loupe
+        pkgs.morewaita-icon-theme
         pkgs.nautilus
         pkgs.xwayland-satellite
       ];
