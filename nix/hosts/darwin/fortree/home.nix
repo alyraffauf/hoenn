@@ -1,6 +1,27 @@
 {inputs, ...}: {
-  flake.darwinModules.fortree = {self, ...}: {
+  flake.darwinModules.fortree = {
+    config,
+    self,
+    ...
+  }: let
+    syncthingCert = config.sops.secrets.syncthing-cert.path;
+    syncthingKey = config.sops.secrets.syncthing-key.path;
+  in {
     imports = [inputs.home-manager.darwinModules.home-manager];
+
+    sops.secrets = {
+      syncthing-cert = {
+        sopsFile = self + "/secrets/syncthing-fortree.yaml";
+        key = "cert";
+        owner = "aly";
+      };
+
+      syncthing-key = {
+        sopsFile = self + "/secrets/syncthing-fortree.yaml";
+        key = "key";
+        owner = "aly";
+      };
+    };
 
     home-manager = {
       backupFileExtension = "backup";
@@ -17,8 +38,17 @@
 
         imports = [
           self.homeModules.aly
+          self.homeModules.alySyncthing
           self.homeModules.alyZed
         ];
+
+        hoenn.syncthing = {
+          enable = true;
+          cert = syncthingCert;
+          key = syncthingKey;
+
+          folders.sync.enable = true;
+        };
       };
     };
   };
