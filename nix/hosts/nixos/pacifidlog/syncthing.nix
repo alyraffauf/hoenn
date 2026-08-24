@@ -22,7 +22,7 @@ _: {
     };
 
     home-manager.users.aly = {
-      imports = [self.homeModules.syncthing];
+      imports = [self.homeModules.alySyncthing];
 
       hoenn.syncthing = {
         enable = true;

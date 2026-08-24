@@ -1,12 +1,21 @@
 _: {
-  flake.homeModules.syncthing = {
-    config,
-    lib,
-    ...
-  }: let
-    inherit (lib) mkEnableOption mkIf mkMerge mkOption types;
+  flake.homeModules.alySyncthing = {lib, ...}: let
+    inherit (lib) mkEnableOption mkOption types;
 
-    cfg = config.hoenn.syncthing;
+    deviceType = types.submodule {
+      options = {
+        id = mkOption {
+          type = types.nonEmptyStr;
+          description = "Syncthing device ID.";
+        };
+
+        introducer = mkOption {
+          type = types.bool;
+          default = false;
+          description = "Whether this device introduces other Syncthing peers.";
+        };
+      };
+    };
 
     folderType = defaults:
       types.submodule ({name, ...}: {
@@ -63,28 +72,6 @@ _: {
           };
         };
       });
-
-    deviceType = types.submodule {
-      options = {
-        id = mkOption {
-          type = types.nonEmptyStr;
-          description = "Syncthing device ID.";
-        };
-
-        introducer = mkOption {
-          type = types.bool;
-          default = false;
-          description = "Whether this device introduces other Syncthing peers.";
-        };
-      };
-    };
-
-    enabledFolder = folder:
-      mkIf folder.enable {
-        "${folder.path}" = {
-          inherit (folder) devices id ignorePatterns label versioning;
-        };
-      };
   in {
     options.hoenn.syncthing = {
       enable = mkEnableOption "Syncthing with Hoenn's shared folders";
@@ -103,19 +90,7 @@ _: {
 
       devices = mkOption {
         type = types.attrsOf deviceType;
-
-        default = {
-          pacifidlog.id = "PHKZH2R-X5Q3BHI-H7PH3WS-CLNO225-7TUFZMK-RR6VMJ2-PCRB67N-R7JCHAM";
-
-          petalburg = {
-            id = "D5L7KFC-42MKO3W-NIFNTLW-46WFMMY-OQGS3EY-G4GAHHC-YWVYUZD-RQBLVAA";
-            introducer = true;
-          };
-
-          rustboro.id = "Q3BYZ3A-OGKMJBC-DUKGOIY-DDESNHE-ZIML3NO-R6IM5XD-3BAVKZJ-GPSNDA7";
-          sootopolis.id = "2CQCVEL-IMFSTTU-IN65JHW-WST2WEH-2N3XMDR-HESNEMH-WNSQK36-CLGV3AX";
-        };
-
+        default = import ./_devices.nix;
         description = "Syncthing peers available to the managed folders.";
       };
 
@@ -131,6 +106,7 @@ _: {
               params.cleanoutDays = "5";
             };
           };
+
           default = {};
           description = "Configuration for the shared Sync folder.";
         };
@@ -145,40 +121,6 @@ _: {
 
           default = {};
           description = "Configuration for the shared ROMs folder.";
-        };
-      };
-    };
-
-    config = mkIf cfg.enable {
-      assertions = [
-        {
-          assertion = !(cfg.folders.sync.enable && cfg.folders.roms.enable && cfg.folders.sync.path == cfg.folders.roms.path);
-          message = "hoenn.syncthing folders.sync and folders.roms must use different paths.";
-        }
-        {
-          assertion = (cfg.cert == null) == (cfg.key == null);
-          message = "hoenn.syncthing cert and key must be configured together.";
-        }
-      ];
-
-      services.syncthing = {
-        inherit (cfg) cert key;
-
-        enable = true;
-        overrideDevices = false;
-        overrideFolders = false;
-
-        settings = {
-          devices =
-            lib.mapAttrs (_: device: {
-              inherit (device) id introducer;
-            })
-            cfg.devices;
-
-          folders = mkMerge [
-            (enabledFolder cfg.folders.sync)
-            (enabledFolder cfg.folders.roms)
-          ];
         };
       };
     };
