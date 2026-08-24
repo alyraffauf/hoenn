@@ -96,8 +96,10 @@ sops-rekey:
     echo "regenerated .sops.yaml"
     shopt -s globstar
     for f in secrets/**/*.yaml secrets/*.yaml; do
-        echo "rekeying $f"
-        sops updatekeys -y "$f"
+        if [[ "$(sops filestatus "$f")" == *'"encrypted":true'* ]]; then
+            echo "rekeying $f"
+            sops updatekeys -y "$f"
+        fi
     done
 
 # Edit a sops-encrypted secrets file. Usage: just sops-edit tailscale.yaml
