@@ -18,6 +18,7 @@
         imports = [
           self.homeModules.aly
           self.homeModules.alyZed
+          self.homeModules.hermesAgent
         ];
       };
     };
