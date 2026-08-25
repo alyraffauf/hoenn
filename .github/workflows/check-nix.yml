@@ -1,6 +1,8 @@
 concurrency:
   cancel-in-progress: true
   group: ${{ github.workflow }}-${{ github.ref }}
+env:
+  NIX_CONFIG: "access-tokens = github.com=${{ github.token }}"
 jobs:
   check-flake:
     runs-on: ubuntu-latest
