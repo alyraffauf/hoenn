@@ -16,7 +16,6 @@
             ":"
             (lib.makeBinPath [
               pkgs.noctalia
-              pkgs.playerctl
             ])
           ]
         ];
