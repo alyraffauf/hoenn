@@ -9,7 +9,6 @@ _: {
         pkgs.adwaita-icon-theme
         pkgs.ddcutil
         pkgs.file-roller
-        pkgs.ghostty
         pkgs.gnome-disk-utility
         pkgs.gnome-text-editor
         pkgs.loupe
@@ -53,6 +52,7 @@ _: {
     }: {
       wayland.windowManager.niri = {
         enable = true;
+
         package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
       };
     };

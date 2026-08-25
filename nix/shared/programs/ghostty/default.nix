@@ -1,40 +1,35 @@
 _: {
   flake = {
-    darwinModules.default = {pkgs, ...}: {
-      environment.systemPackages = [pkgs.ghostty-bin];
+    darwinModules.default = {
+      pkgs,
+      self,
+      ...
+    }: {
+      environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty];
     };
 
     homeModules.alyGhostty = {
       pkgs,
-      lib,
+      self,
       ...
     }: {
-      programs.ghostty = {
-        enable = true;
-        package = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin pkgs.ghostty-bin;
-
-        settings =
-          {
-            theme = "Catppuccin Frappe";
-            notify-on-command-finish = "unfocused";
-            tab-inherit-working-directory = false;
-            window-inherit-working-directory = false;
-            font-family = "CaskaydiaCove Nerd Font";
-          }
-          // lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
-            gtk-titlebar-style = "tabs";
-            window-theme = "dark";
-            linux-cgroup = "always";
-          };
-      };
+      home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty];
     };
 
-    nixosModules.aly = {pkgs, ...}: {
-      users.users.aly.packages = [pkgs.ghostty];
+    nixosModules.aly = {
+      pkgs,
+      self,
+      ...
+    }: {
+      users.users.aly.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty];
     };
 
-    systemModules.default = {pkgs, ...}: {
-      environment.systemPackages = [pkgs.ghostty];
+    systemModules.default = {
+      pkgs,
+      self,
+      ...
+    }: {
+      environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty];
     };
   };
 }
