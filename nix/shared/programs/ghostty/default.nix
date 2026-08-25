@@ -1,6 +1,6 @@
 _: {
-  flake = {pkgs, ...}: {
-    darwinModules.default = {
+  flake = {
+    darwinModules.default = {pkgs, ...}: {
       environment.systemPackages = [pkgs.ghostty-bin];
     };
 
