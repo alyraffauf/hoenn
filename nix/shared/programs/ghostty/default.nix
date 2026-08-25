@@ -25,11 +25,11 @@ _: {
     };
 
     systemModules.default = {
+      inputs,
       pkgs,
-      self,
       ...
     }: {
-      environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty];
+      environment.systemPackages = [inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty];
     };
   };
 }
