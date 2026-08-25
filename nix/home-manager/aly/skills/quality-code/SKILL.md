@@ -1,6 +1,6 @@
 ---
 name: quality-code
-description: Standards for writing or modifying handwritten source code. Use when implementing code changes. Do not use for code review, browsing, explanation, diagnosis without implementation, generated code, or vendored code.
+description: Standards for writing or modifying handwritten source code. Use when implementing code changes or reviewing handwritten code. Do not use for browsing, explanation, diagnosis without implementation, generated code, or vendored code.
 ---
 
 # Quality code

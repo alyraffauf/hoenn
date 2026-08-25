@@ -24,14 +24,26 @@ parseArguments() {
   while [[ $# -gt 0 ]]; do
     case "$1" in
     -R)
+      if [[ $# -lt 2 ]]; then
+        printUsage
+        exit 2
+      fi
       repository="$2"
       shift 2
       ;;
     --body)
+      if [[ $# -lt 2 ]]; then
+        printUsage
+        exit 2
+      fi
       bodyContent="$2"
       shift 2
       ;;
     --body-file)
+      if [[ $# -lt 2 ]]; then
+        printUsage
+        exit 2
+      fi
       bodyFilePath="$2"
       shift 2
       ;;
