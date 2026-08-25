@@ -1,34 +1,41 @@
-_: let
-  variables = let
-    FLAKE = "github:alyraffauf/hoenn";
-  in {
-    inherit FLAKE;
-    NH_FLAKE = FLAKE;
-  };
+{inputs, ...}: {
+  perSystem = {pkgs, ...}: {
+    packages.nh = inputs.nix-wrapper-modules.wrappers.nh.wrap {
+      inherit pkgs;
 
-  environmentFor = systemPackages: {
-    inherit systemPackages;
-    inherit variables;
-  };
-in {
-  flake = {
-    nixosModules.default = {pkgs, ...}: {
-      environment = environmentFor [pkgs.git];
-      programs.nh.enable = true;
+      flake = "github:alyraffauf/hoenn";
     };
+  };
 
-    darwinModules.default = {pkgs, ...}: {
-      environment = environmentFor [
+  flake = {
+    nixosModules.default = {
+      pkgs,
+      self,
+      ...
+    }: {
+      environment.systemPackages = [
         pkgs.git
-        pkgs.nh
+        self.packages.${pkgs.stdenv.hostPlatform.system}.nh
       ];
     };
 
-    homeModules.aly = {pkgs, ...}: {
-      home = {
-        packages = [pkgs.nh];
-        sessionVariables = variables;
-      };
+    darwinModules.default = {
+      pkgs,
+      self,
+      ...
+    }: {
+      environment.systemPackages = [
+        pkgs.git
+        self.packages.${pkgs.stdenv.hostPlatform.system}.nh
+      ];
+    };
+
+    homeModules.aly = {
+      pkgs,
+      self,
+      ...
+    }: {
+      home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.nh];
     };
   };
 }
