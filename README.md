@@ -67,6 +67,12 @@ nix build .#systemConfigs.sootopolis
 # Refresh the generated NixOS host hardware documentation.
 nix run github:alyraffauf/infra#generate-host-readmes
 
+# Generate the Niri keyboard reference after changing config.kdl.
+bun scripts/generate-niri-keybindings.ts
+
+# Check that the committed Niri reference is current.
+bun scripts/generate-niri-keybindings.ts --check
+
 # Discover repository maintenance recipes.
 just
 ```
@@ -101,6 +107,9 @@ just sops-rekey               # Update recipients after keys/ changes
 
 Commit `.sops.yaml` and all re-encrypted files together after changing a public
 key in `keys/`.
+
+See the [Niri keyboard reference](nix/shared/features/niri/README.md) for the
+configured desktop shortcuts.
 
 See [AGENTS.md](AGENTS.md) for contribution and validation guidelines. This
 project is available under the [MIT License](LICENSE.md).

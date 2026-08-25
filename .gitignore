@@ -2,6 +2,7 @@
 .bootstrap/
 .direnv
 .helix/
+node_modules/
 .pre-commit-config.yaml
 .vscode/
 .zed/
