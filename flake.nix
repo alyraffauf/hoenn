@@ -84,6 +84,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    tg = {
+      url = "git+https://tangled.org/aly.codes/tg";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
