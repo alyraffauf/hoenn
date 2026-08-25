@@ -7,6 +7,7 @@ _: {
     }: {
       environment.systemPackages = [
         pkgs.adwaita-icon-theme
+        pkgs.ddcutil
         pkgs.file-roller
         pkgs.ghostty
         pkgs.gnome-disk-utility
