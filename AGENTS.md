@@ -14,7 +14,7 @@ nix build .#darwinConfigurations.fortree.config.system.build.toplevel
 nix build .#systemConfigs.sootopolis
 ```
 
-If a NixOS host's `facter.json` changes, run `bun scripts/generate-host-readmes.ts`. Do not edit text between generated-section markers in a host README.
+If a NixOS host's `facter.json` changes, run `nix run github:alyraffauf/infra#generate-host-readmes`. Do not edit text between generated-section markers in a host README.
 
 ## Deploy deliberately
 

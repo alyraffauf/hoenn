@@ -65,7 +65,7 @@ nix build .#darwinConfigurations.fortree.config.system.build.toplevel
 nix build .#systemConfigs.sootopolis
 
 # Refresh the generated NixOS host hardware documentation.
-bun scripts/generate-host-readmes.ts
+nix run github:alyraffauf/infra#generate-host-readmes
 
 # Discover repository maintenance recipes.
 just
