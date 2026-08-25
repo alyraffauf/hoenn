@@ -40,6 +40,7 @@ _: {
         };
 
         gvfs.enable = true;
+        iio-niri.enable = true;
       };
 
       xdg.icons.fallbackCursorThemes = ["Adwaita"];
