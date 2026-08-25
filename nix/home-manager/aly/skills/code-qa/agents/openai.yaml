@@ -1,0 +1,6 @@
+interface:
+  display_name: "Code QA"
+  short_description: "Review code for readability and sound contracts"
+  default_prompt: "Use $code-qa to review this change and rank every finding by impact."
+policy:
+  allow_implicit_invocation: false
