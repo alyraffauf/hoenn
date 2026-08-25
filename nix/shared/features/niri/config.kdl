@@ -223,7 +223,7 @@ binds {
 // https://niri-wm.github.io/niri/Configuration:-Switch-Events
 switch-events {
     lid-close {
-        spawn "noctalia" "msg" "session" "lock-and-suspend"
+        spawn-sh "noctalia msg session lock && systemctl suspend-then-hibernate"
     }
 }
 

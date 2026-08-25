@@ -5,6 +5,10 @@ _: {
       kernelParams = ["resume_offset=2404082"];
     };
 
-    systemd.sleep.settings.Sleep.HibernateMode = "shutdown";
+    systemd.sleep.settings.Sleep = {
+      HibernateDelaySec = "2h";
+      HibernateMode = "shutdown";
+      HibernateOnACPower = false;
+    };
   };
 }
