@@ -1,14 +1,14 @@
 _: {
   flake = let
-    packages = {
+    userPackages = {
       pkgs,
       self,
       ...
     }: {
-      environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.eza];
+      users.users.aly.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.eza];
     };
   in {
-    darwinModules.default = packages;
+    darwinModules.aly = userPackages;
 
     homeModules.aly = {
       pkgs,
@@ -18,6 +18,6 @@ _: {
       home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.eza];
     };
 
-    nixosModules.default = packages;
+    nixosModules.aly = userPackages;
   };
 }

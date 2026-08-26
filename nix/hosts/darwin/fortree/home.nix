@@ -38,7 +38,6 @@
 
         imports = [
           self.homeModules.aly
-          self.homeModules.alyGhostty
           self.homeModules.alySyncthing
           self.homeModules.alyZed
         ];

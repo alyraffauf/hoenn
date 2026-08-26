@@ -1,13 +1,13 @@
 _: let
   module = {pkgs, ...}: {
-    environment.systemPackages = [pkgs.htop];
+    environment.systemPackages = [pkgs.ripgrep-all];
   };
 in {
   flake = {
     darwinModules.default = module;
 
     homeModules.aly = {pkgs, ...}: {
-      home.packages = [pkgs.htop];
+      home.packages = [pkgs.ripgrep-all];
     };
 
     nixosModules.default = module;
