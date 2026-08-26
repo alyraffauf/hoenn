@@ -18,6 +18,7 @@ _: {
 
         users.aly = {
           description = "Aly Raffauf";
+
           extraGroups = [
             "cdrom"
             "dialout"
@@ -31,6 +32,7 @@ _: {
             "video"
             "wheel"
           ];
+
           group = "aly";
           hashedPasswordFile = config.sops.secrets.aly-password.path;
           home = "/home/aly";

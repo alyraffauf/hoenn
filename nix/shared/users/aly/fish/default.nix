@@ -4,8 +4,8 @@ _: let
   };
 in {
   flake = {
-    nixosModules.default = module;
-    darwinModules.default = module;
+    nixosModules.aly = module;
+    darwinModules.aly = module;
 
     homeModules.aly = {
       programs.fish = {
