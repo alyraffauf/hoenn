@@ -1,6 +1,6 @@
 _: {
   flake = {
-    homeModules.alyZed = {
+    homeModules.aly = {
       programs.zed-editor = {
         enable = true;
         installRemoteServer = true;

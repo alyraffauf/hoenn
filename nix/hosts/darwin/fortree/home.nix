@@ -39,7 +39,6 @@
         imports = [
           self.homeModules.aly
           self.homeModules.alySyncthing
-          self.homeModules.alyZed
         ];
 
         hoenn.syncthing = {
