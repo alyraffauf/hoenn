@@ -3,7 +3,9 @@
   lib,
   ...
 }: {
-  perSystem = {pkgs, ...}: {
+  perSystem = {pkgs, ...}: let
+    gitPackage = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.git;
+  in {
     packages.tmux = inputs.nix-wrapper-modules.wrappers.tmux.wrap {
       inherit pkgs;
 
@@ -57,7 +59,7 @@
             [
               pkgs.coreutils
               pkgs.fzf
-              pkgs.git
+              gitPackage
               pkgs.gnugrep
               pkgs.gnused
               pkgs.ripgrep
