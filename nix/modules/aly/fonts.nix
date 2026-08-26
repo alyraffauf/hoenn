@@ -15,11 +15,8 @@ in {
       home.packages = fonts pkgs;
     };
 
-    darwinModules.aly = {
-      homebrew.casks = [
-        "font-caskaydia-cove-nerd-font"
-        "font-fira-code-nerd-font"
-      ];
+    darwinModules.aly = {pkgs, ...}: {
+      fonts.packages = fonts pkgs;
     };
   };
 }

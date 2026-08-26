@@ -1,5 +1,11 @@
 _: {
-  flake = {
+  flake = let
+    userPackages = {pkgs, ...}: {
+      users.users.aly.packages = [pkgs.zed-editor];
+    };
+  in {
+    darwinModules.aly = userPackages;
+
     homeModules.aly = {
       programs.zed-editor = {
         enable = true;
@@ -122,8 +128,6 @@ _: {
       };
     };
 
-    nixosModules.aly = {pkgs, ...}: {
-      users.users.aly.packages = [pkgs.zed-editor];
-    };
+    nixosModules.aly = userPackages;
   };
 }

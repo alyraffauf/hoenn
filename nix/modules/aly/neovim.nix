@@ -9,8 +9,7 @@ in {
       home.packages = [(neovimPackage pkgs)];
     };
 
-    nixosModules.aly = userPackages;
-
     darwinModules.aly = userPackages;
+    nixosModules.aly = userPackages;
   };
 }

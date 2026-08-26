@@ -14,6 +14,10 @@ in {
       users.users.aly.packages = shellPackages pkgs;
     };
 
+    darwinModules.aly = {pkgs, ...}: {
+      users.users.aly.packages = shellPackages pkgs;
+    };
+
     homeModules.aly = {pkgs, ...}: {
       home.packages = shellPackages pkgs;
     };

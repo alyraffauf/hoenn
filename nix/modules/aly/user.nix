@@ -1,5 +1,10 @@
-_: {
-  flake = {
+{lib, ...}: {
+  options.flake.darwinModules.aly = lib.mkOption {
+    type = lib.types.deferredModule;
+    default = {};
+  };
+
+  config.flake = {
     nixosModules.aly = {
       config,
       lib,

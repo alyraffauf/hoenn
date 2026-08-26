@@ -8,8 +8,6 @@ _: {
       users.users.aly.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.git];
     };
   in {
-    nixosModules.aly = userPackages;
-
     darwinModules.aly = userPackages;
 
     homeModules.aly = {
@@ -19,5 +17,7 @@ _: {
     }: {
       home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.git];
     };
+
+    nixosModules.aly = userPackages;
   };
 }
