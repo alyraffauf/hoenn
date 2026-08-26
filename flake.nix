@@ -1,5 +1,5 @@
 {
-  description = "Personal NixOS, Darwin, Home Manager, and system-manager configurations";
+  description = "Personal NixOS, Darwin, and Home Manager configurations";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -11,11 +11,6 @@
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.treefmt-nix.follows = "treefmt-nix";
-    };
-
-    nix-system-graphics = {
-      url = "github:soupglasses/nix-system-graphics";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
@@ -76,11 +71,6 @@
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    system-manager = {
-      url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

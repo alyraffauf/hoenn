@@ -1,6 +1,6 @@
 # Work in Hoenn
 
-Hoenn configures personal machines. It contains NixOS, nix-darwin, Home Manager, and system-manager configurations. Keep host-specific state in `nix/hosts/<platform>/<host>/`. Put shared platform settings in `nix/nixos/`, `nix/darwin/`, or `nix/system-manager/`.
+Hoenn configures personal machines. It contains NixOS, nix-darwin, and Home Manager configurations. Keep host-specific state in `nix/hosts/<platform>/<host>/`. Put shared platform settings in `nix/nixos/` or `nix/darwin/`.
 
 `flake.nix` imports the Nix files under `nix/`. `keys/` holds public recipients. `secrets/` holds SOPS-encrypted files. `scripts/` holds maintenance tools.
 
@@ -11,7 +11,6 @@ Run `nix fmt` and `nix flake check` before you commit. Build each output affecte
 ```sh
 nix build .#nixosConfigurations.<host>.config.system.build.toplevel
 nix build .#darwinConfigurations.fortree.config.system.build.toplevel
-nix build .#systemConfigs.sootopolis
 ```
 
 If a NixOS host's `facter.json` changes, run `nix run github:alyraffauf/infra#generate-host-readmes`. Do not edit text between generated-section markers in a host README.

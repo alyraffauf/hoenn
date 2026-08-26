@@ -1,7 +1,7 @@
 # ❄️ hoenn
 
 Declarative configuration for my personal machines. Hoenn uses a flake-parts
-Nix flake to compose NixOS, nix-darwin, Home Manager, and system-manager configurations,
+Nix flake to compose NixOS, nix-darwin, and Home Manager configurations,
 with shared modules for packages, desktop environments, networking, secrets,
 and automatic upgrades.
 
@@ -10,15 +10,14 @@ my production services, see [sinnoh](https://github.com/alyraffauf/sinnoh).
 
 ## Configurations
 
-| Host                                                 | Platform       | Flake output                     |
-| ---------------------------------------------------- | -------------- | -------------------------------- |
-| [`fallarbor`](nix/hosts/nixos/fallarbor/README.md)   | NixOS          | `nixosConfigurations.fallarbor`  |
-| [`mauville`](nix/hosts/nixos/mauville/README.md)     | NixOS          | `nixosConfigurations.mauville`   |
-| [`pacifidlog`](nix/hosts/nixos/pacifidlog/README.md) | NixOS          | `nixosConfigurations.pacifidlog` |
-| [`rustboro`](nix/hosts/nixos/rustboro/README.md)     | NixOS          | `nixosConfigurations.rustboro`   |
-| [`sootopolis`](nix/hosts/nixos/sootopolis/README.md) | NixOS          | `nixosConfigurations.sootopolis` |
-| [`fortree`](nix/hosts/darwin/fortree/README.md)      | nix-darwin     | `darwinConfigurations.fortree`   |
-| `sootopolis`                                         | system-manager | `systemConfigs.sootopolis`       |
+| Host                                                 | Platform   | Flake output                     |
+| ---------------------------------------------------- | ---------- | -------------------------------- |
+| [`fallarbor`](nix/hosts/nixos/fallarbor/README.md)   | NixOS      | `nixosConfigurations.fallarbor`  |
+| [`mauville`](nix/hosts/nixos/mauville/README.md)     | NixOS      | `nixosConfigurations.mauville`   |
+| [`pacifidlog`](nix/hosts/nixos/pacifidlog/README.md) | NixOS      | `nixosConfigurations.pacifidlog` |
+| [`rustboro`](nix/hosts/nixos/rustboro/README.md)     | NixOS      | `nixosConfigurations.rustboro`   |
+| [`sootopolis`](nix/hosts/nixos/sootopolis/README.md) | NixOS      | `nixosConfigurations.sootopolis` |
+| [`fortree`](nix/hosts/darwin/fortree/README.md)      | nix-darwin | `darwinConfigurations.fortree`   |
 
 NixOS hardware discovery is captured with nixos-facter, disk layouts are
 declared with Disko, and SOPS manages encrypted secrets. Shared WireGuard and
@@ -32,7 +31,6 @@ nix/
 ├── nixos/  Shared NixOS modules and features
 ├── darwin/  Shared nix-darwin modules
 ├── homes/  Home Manager modules
-├── system-manager/  Shared system-manager modules
 ├── deployments.nix  blzrd deployment targets
 ├── devShells.nix  Development tools
 └── treefmt.nix  Formatting and linting configuration
@@ -62,7 +60,6 @@ nix flake check
 # Build configurations without activating them.
 nix build .#nixosConfigurations.mauville.config.system.build.toplevel
 nix build .#darwinConfigurations.fortree.config.system.build.toplevel
-nix build .#systemConfigs.sootopolis
 
 # Refresh the generated NixOS host hardware documentation.
 nix run github:alyraffauf/infra#generate-host-readmes
@@ -78,7 +75,7 @@ just
 ```
 
 CI evaluates the complete flake and separately builds the development shell
-plus NixOS, nix-darwin, and system-manager outputs.
+plus NixOS and nix-darwin outputs.
 
 ## NixOS Deployments
 

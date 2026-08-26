@@ -7,9 +7,5 @@ _: {
     nixosModules.aly = {pkgs, ...}: {
       users.users.aly.packages = [pkgs.vscode];
     };
-
-    systemModules.default = {pkgs, ...}: {
-      environment.systemPackages = [pkgs.vscode];
-    };
   };
 }

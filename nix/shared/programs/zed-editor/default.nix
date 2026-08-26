@@ -125,9 +125,5 @@ _: {
     nixosModules.aly = {pkgs, ...}: {
       users.users.aly.packages = [pkgs.zed-editor];
     };
-
-    systemModules.default = {pkgs, ...}: {
-      environment.systemPackages = [pkgs.zed-editor];
-    };
   };
 }

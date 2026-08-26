@@ -7,9 +7,5 @@ _: {
     darwinModules.aly = {
       homebrew.casks = ["opencode-desktop"];
     };
-
-    systemModules.default = {pkgs, ...}: {
-      environment.systemPackages = [pkgs.opencode-desktop];
-    };
   };
 }

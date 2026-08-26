@@ -8,7 +8,6 @@ _: let
 in {
   flake = {
     nixosModules.default = module;
-    systemModules.default = module;
 
     darwinModules.default = {
       security = {

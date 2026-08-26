@@ -70,17 +70,13 @@ in {
           RunAtLoad = false;
           StandardErrorPath = "/var/log/nix-darwin-upgrade.log";
           StandardOutPath = "/var/log/nix-darwin-upgrade.log";
+
           StartCalendarInterval = {
             Hour = 2;
             Minute = 0;
           };
         };
       };
-    };
-
-    systemModules.default = {
-      system.autoUpgrade = autoUpgrade "github:alyraffauf/hoenn#systemConfigs.sootopolis";
-      systemd.services = upgradeService "system-manager-upgrade";
     };
   };
 }
