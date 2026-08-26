@@ -1,14 +1,25 @@
-_: {
-  flake.homeModules.aly = {pkgs, ...}: {
-    programs.delta = {
-      enable = true;
-      enableGitIntegration = true;
-    };
-
-    programs.git = {
-      enable = true;
+{
+  inputs,
+  lib,
+  ...
+}: {
+  perSystem = {pkgs, ...}: let
+    gitLfs = lib.getExe pkgs.git-lfs;
+  in {
+    packages.git = inputs.nix-wrapper-modules.wrappers.git.wrap {
+      inherit pkgs;
       package = pkgs.gitFull;
-      lfs.enable = true;
+
+      prefixVar = [
+        [
+          "PATH"
+          ":"
+          (lib.makeBinPath [
+            pkgs.delta
+            pkgs.git-lfs
+          ])
+        ]
+      ];
 
       settings = {
         color.ui = true;
@@ -19,7 +30,7 @@ _: {
           name = "Aly Raffauf";
         };
 
-        init.defaultBranch = "main";
+        init.defaultBranch = "master";
 
         fetch = {
           prune = true;
@@ -72,6 +83,22 @@ _: {
           amend = "commit --amend --no-edit";
           undo = "reset --soft HEAD^";
           gone = "!git fetch --prune && git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -d";
+        };
+
+        pager = {
+          blame = "delta";
+          diff = "delta";
+          log = "delta";
+          show = "delta";
+        };
+
+        interactive.diffFilter = "delta --color-only";
+
+        filter.lfs = {
+          clean = "${gitLfs} clean -- %f";
+          process = "${gitLfs} filter-process";
+          required = true;
+          smudge = "${gitLfs} smudge -- %f";
         };
       };
     };
