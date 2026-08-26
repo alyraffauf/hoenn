@@ -9,17 +9,5 @@ _: {
       lt = "eza --tree";
       tree = "eza --tree";
     };
-
-    programs.eza = {
-      enable = true;
-
-      extraOptions = [
-        "--group-directories-first"
-        "--header"
-      ];
-
-      git = true;
-      icons = "auto";
-    };
   };
 }
