@@ -19,6 +19,7 @@ _: {
 
     users.users.dustin = {
       description = "Dustin Raffauf";
+
       extraGroups = [
         "cdrom"
         "dialout"
@@ -28,6 +29,7 @@ _: {
         "video"
         "wheel"
       ];
+
       hashedPasswordFile = config.sops.secrets.dustin-password.path;
       home = "/home/dustin";
       isNormalUser = true;

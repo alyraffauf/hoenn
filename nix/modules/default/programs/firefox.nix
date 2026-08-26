@@ -1,7 +1,7 @@
 _: {
   flake = {
-    darwinModules.default = {
-      homebrew.casks = ["firefox"];
+    darwinModules.default = {pkgs, ...}: {
+      environment.systemPackages = [pkgs.firefox];
     };
 
     nixosModules.default = {

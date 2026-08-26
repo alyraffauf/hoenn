@@ -1,6 +1,7 @@
 {
   inputs,
   self,
+  sharedPackageSets,
   ...
 }: {
   config = {
@@ -8,14 +9,17 @@
       system = "x86_64-linux";
 
       modules = [
+        {
+          nixpkgs.pkgs = sharedPackageSets.x86_64-linux;
+        }
+
         inputs.determinate.nixosModules.default
         inputs.disko.nixosModules.disko
-        inputs.sops-nix.nixosModules.sops
         self.nixosModules.default
         self.nixosModules.mauville
         self.nixosModules.aly
+        self.nixosModules.ghostty
         self.nixosModules.gnome
-        self.nixosModules.homebrew
         self.nixosModules.tailscale
         self.nixosModules.wireguardHoenn
       ];

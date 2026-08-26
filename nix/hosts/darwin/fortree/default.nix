@@ -1,6 +1,7 @@
 {
   lib,
   self,
+  sharedPackageSets,
   inputs,
   ...
 }: {
@@ -12,9 +13,19 @@
   config.flake = {
     darwinConfigurations.fortree = inputs.nix-darwin.lib.darwinSystem {
       modules = [
-        inputs.sops-nix.darwinModules.sops
+        {
+          nixpkgs = {
+            hostPlatform = "aarch64-darwin";
+            pkgs = sharedPackageSets.aarch64-darwin;
+          };
+
+          system.primaryUser = "aly";
+        }
+
         self.darwinModules.default
+        self.darwinModules.homebrew
         self.darwinModules.aly
+        self.darwinModules.ghostty
         self.darwinModules.fortree
         self.darwinModules.tailscale
         self.darwinModules.wireguardHoenn

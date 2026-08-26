@@ -1,18 +1,23 @@
 {
   inputs,
   self,
+  sharedPackageSets,
   ...
 }: {
   config.flake.nixosConfigurations.pacifidlog = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
 
     modules = [
+      {
+        nixpkgs.pkgs = sharedPackageSets.x86_64-linux;
+      }
+
       inputs.determinate.nixosModules.default
       inputs.disko.nixosModules.disko
-      inputs.sops-nix.nixosModules.sops
       self.nixosModules.default
       self.nixosModules.pacifidlog
       self.nixosModules.aly
+      self.nixosModules.ghostty
       self.nixosModules.niri
       self.nixosModules.tailscale
       self.nixosModules.thermald

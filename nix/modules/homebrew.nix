@@ -1,5 +1,28 @@
-_: {
-  flake.nixosModules.homebrew = {
+{lib, ...}: {
+  options.flake.darwinModules.homebrew = lib.mkOption {
+    type = lib.types.deferredModule;
+    default = {};
+  };
+
+  config.flake.darwinModules.homebrew = {
+    homebrew = {
+      enable = true;
+
+      brews = [
+        "mas"
+      ];
+
+      global.autoUpdate = true;
+      greedyCasks = true;
+
+      onActivation = {
+        # cleanup = "zap";
+        upgrade = true;
+      };
+    };
+  };
+
+  config.flake.nixosModules.homebrew = {
     config,
     lib,
     pkgs,
