@@ -15,7 +15,10 @@ in {
       self,
       ...
     }: {
-      home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty];
+      programs.ghostty = {
+        enable = true;
+        package = self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty;
+      };
     };
 
     nixosModules.aly = userPackages;

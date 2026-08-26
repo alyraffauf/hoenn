@@ -15,7 +15,10 @@ _: {
       self,
       ...
     }: {
-      home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.eza];
+      programs.eza = {
+        enable = true;
+        package = self.packages.${pkgs.stdenv.hostPlatform.system}.eza;
+      };
     };
 
     nixosModules.aly = userPackages;
