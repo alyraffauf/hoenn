@@ -928,15 +928,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1787540599,
-        "narHash": "sha256-MHwk52ty3NsLhq9a1IbIfBJZlCUJIdiUYFo52JLK9hY=",
-        "owner": "nix-community",
+        "lastModified": 1787807046,
+        "narHash": "sha256-D7coRqxDQwQVqk2axI+fpNTRlGM+WDCSFtONQVjHpwE=",
+        "owner": "alyraffauf",
         "repo": "home-manager",
-        "rev": "03f4cd46bc1dd4f3a96da778d2ce9f7ce39dd450",
+        "rev": "266d21a8f3d0ed3522ac565814eb2b0a941d5928",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "alyraffauf",
+        "ref": "vscode-mutable-user-settings",
         "repo": "home-manager",
         "type": "github"
       }

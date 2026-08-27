@@ -31,7 +31,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:alyraffauf/home-manager/vscode-mutable-user-settings";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
