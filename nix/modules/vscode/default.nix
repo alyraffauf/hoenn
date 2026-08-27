@@ -1,5 +1,7 @@
 _: {
   flake.homeModules.vscode = {pkgs, ...}: {
+    home.packages = with pkgs; [nixd];
+
     programs.vscode = {
       enable = true;
       mutableExtensionsDir = true;
@@ -51,6 +53,20 @@ _: {
           "workbench.iconTheme" = "catppuccin-frappe";
           "catppuccin.accentColor" = "pink";
           "catppuccin-icons.monochrome" = true;
+          "nix.enableLanguageServer" = true;
+          "nix.serverPath" = "nixd";
+          "nix.serverSettings" = {
+            nixd.formatting.command = [
+              "nix"
+              "fmt"
+              "--"
+              "--stdin"
+              "stdin.nix"
+            ];
+          };
+          "[nix]" = {
+            "editor.defaultFormatter" = "jnoortheen.nix-ide";
+          };
         };
       };
     };
