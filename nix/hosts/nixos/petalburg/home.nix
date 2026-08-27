@@ -17,8 +17,10 @@
 
         imports = [
           self.homeModules.aly
-          self.homeModules.alyGhostty
-          self.homeModules.alyZed
+          self.homeModules.ghostty
+          self.homeModules.zed-editor
+          self.homeModules.vscode
+          self.homeModules.opencodeDesktop
           self.homeModules.hermesAgent
         ];
       };

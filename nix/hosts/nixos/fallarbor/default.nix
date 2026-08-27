@@ -14,6 +14,8 @@
       self.nixosModules.default
       self.nixosModules.dustin
       self.nixosModules.fallarbor
+      self.nixosModules.google-chrome
+      self.nixosModules.nixos
       self.nixosModules.thermald
       self.nixosModules.wireguardHoenn
     ];

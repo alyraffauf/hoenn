@@ -12,12 +12,14 @@
   config.flake = {
     darwinConfigurations.fortree = inputs.nix-darwin.lib.darwinSystem {
       modules = [
+        self.darwinModules.fortree
         inputs.sops-nix.darwinModules.sops
         self.darwinModules.default
+        self.darwinModules.darwin
         self.darwinModules.aly
-        self.darwinModules.fortree
         self.darwinModules.tailscale
         self.darwinModules.wireguardHoenn
+        self.darwinModules.zen
       ];
 
       specialArgs = {inherit self;};

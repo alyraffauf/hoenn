@@ -38,9 +38,11 @@
 
         imports = [
           self.homeModules.aly
-          self.homeModules.alyGhostty
-          self.homeModules.alySyncthing
-          self.homeModules.alyZed
+          self.homeModules.ghostty
+          self.homeModules.syncthing
+          self.homeModules.zed-editor
+          self.homeModules.vscode
+          self.homeModules.opencodeDesktop
         ];
 
         hoenn.syncthing = {

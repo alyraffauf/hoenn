@@ -12,12 +12,14 @@
         inputs.disko.nixosModules.disko
         inputs.sops-nix.nixosModules.sops
         self.nixosModules.default
+        self.nixosModules.nixos
         self.nixosModules.mauville
         self.nixosModules.aly
         self.nixosModules.gnome
         self.nixosModules.homebrew
         self.nixosModules.tailscale
         self.nixosModules.wireguardHoenn
+        self.nixosModules.zen
       ];
 
       specialArgs = {inherit self;};
