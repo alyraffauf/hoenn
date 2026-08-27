@@ -16,7 +16,7 @@ _: {
           window-inherit-working-directory = false;
           font-family = "CaskaydiaCove Nerd Font";
         }
-        // lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+        // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
           gtk-titlebar-style = "tabs";
           window-theme = "dark";
           linux-cgroup = "always";
