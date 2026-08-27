@@ -928,11 +928,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787807046,
-        "narHash": "sha256-D7coRqxDQwQVqk2axI+fpNTRlGM+WDCSFtONQVjHpwE=",
+        "lastModified": 1787833796,
+        "narHash": "sha256-SrgYcFfUW1mA3+yF8GExvyE+EUC4ms+fJcgoY/iEJzE=",
         "owner": "alyraffauf",
         "repo": "home-manager",
-        "rev": "266d21a8f3d0ed3522ac565814eb2b0a941d5928",
+        "rev": "23b486fa0756231de732ccaec49113d22d9de395",
         "type": "github"
       },
       "original": {
