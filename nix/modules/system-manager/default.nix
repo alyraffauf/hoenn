@@ -1,6 +1,13 @@
 {lib, ...}: {
-  options.flake.systemModules.systemManager = lib.mkOption {
-    type = lib.types.deferredModule;
-    default = {};
+  options.flake.systemModules = {
+    default = lib.mkOption {
+      type = lib.types.deferredModule;
+      default = {};
+    };
+
+    systemManager = lib.mkOption {
+      type = lib.types.deferredModule;
+      default = {};
+    };
   };
 }
