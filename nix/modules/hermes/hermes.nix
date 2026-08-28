@@ -10,13 +10,9 @@
         inputs.sops-nix.homeManagerModules.sops
       ];
 
-      sops = {
-        age.keyFile = "/home/aly/.config/sops/age/keys.txt";
-
-        secrets.hermes = {
-          key = "env";
-          sopsFile = self + "/secrets/hermes.yaml";
-        };
+      sops.secrets.hermes = {
+        key = "env";
+        sopsFile = self + "/secrets/hermes.yaml";
       };
 
       programs.hermes-agent.enable = true;
