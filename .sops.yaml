@@ -9,7 +9,7 @@ keys:
   - &user_aly_pacifidlog age1j9jju3whwj72udhge7v4c77gk6v6w2cq8zjngzyppwtptfsz499qyywu9a
   - &user_aly_petalburg age162sx8kppp90mjxw88eqs78hgnpkddf8k9kgtksmmexzvcdxknpkspmkgaf
   - &user_aly_rustboro age1fczwtlqdqq7pjyzna2yl9nvmhpe68zk5k6nyn0dt4sp0lts04anskhcmu6
-  - &user_aly_sootopolis age15td0jk5e2qeq2pexvxguhuuaxuaa7nhql7mhx9jr79caska6t4pqdv5spl
+  - &user_aly_sootopolis age16fm9jk3msta76lp7t0m5a5hn8l4gc752unl09azjkk33z3ghxg7sd52yrj
   # === host keys (root@<host>) ===
   - &host_fallarbor age1v4x5alkmvxsx5jsrwpecx0tne0ch2rwfkk0rq5w8x578j2pf5urssg5gx2
   - &host_fortree age1nl6m6gpea4kxr53c35y2tp0dd26nz8jurd7058nf0fmf2wqzxu0qsdg2fk
