@@ -15,6 +15,7 @@
         self.nixosModules.comin
         self.nixosModules.default
         self.nixosModules.gnome
+        self.nixosModules.google-chrome
         self.nixosModules.homebrew
         self.nixosModules.mauville
         self.nixosModules.nixos

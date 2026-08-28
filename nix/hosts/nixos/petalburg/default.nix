@@ -14,6 +14,7 @@
         self.nixosModules.aly
         self.nixosModules.comin
         self.nixosModules.default
+        self.nixosModules.google-chrome
         self.nixosModules.hermesWebui
         self.nixosModules.niri
         self.nixosModules.nixos
