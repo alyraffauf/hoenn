@@ -6,8 +6,6 @@
     ":dependencyDashboard",
     "helpers:pinGitHubActionDigests"
   ],
-  "timezone": "America/New_York",
-  "schedule": ["* 22-23,0-5 * * *"],
   "labels": ["dependencies"],
   "platformAutomerge": true,
 
