@@ -13,6 +13,11 @@
           mode = "dashboard";
           port = 9119;
         };
+
+        settings = {
+          browser.cloud_provider = "browserbase";
+          web.backend = "firecrawl";
+        };
       };
     };
 
