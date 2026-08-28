@@ -20,6 +20,10 @@ _: {
           gtk-titlebar-style = "tabs";
           window-theme = "dark";
           linux-cgroup = "always";
+        }
+        // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
+          background-blur = true;
+          background-opacity = 0.8;
         };
     };
   };
