@@ -10,9 +10,13 @@
         inputs.sops-nix.homeManagerModules.sops
       ];
 
-      sops.secrets.hermes = {
-        key = "env";
-        sopsFile = self + "/secrets/hermes.yaml";
+      sops = {
+        age.sshKeyPaths = ["${config.home.homeDirectory}/.ssh/id_ed25519"];
+
+        secrets.hermes = {
+          key = "env";
+          sopsFile = self + "/secrets/hermes.yaml";
+        };
       };
 
       programs.hermes-agent.enable = true;
