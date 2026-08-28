@@ -1,6 +1,10 @@
 _: {
-  flake.homeModules.vscode = {pkgs, ...}: {
-    home.packages = with pkgs; [nixd];
+  flake.homeModules.vscode = {
+    lib,
+    pkgs,
+    ...
+  }: {
+    home.packages = with pkgs; [alejandra nixd];
 
     programs.vscode = {
       enable = true;
@@ -55,14 +59,9 @@ _: {
           "catppuccin-icons.monochrome" = true;
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "nixd";
+          "nix.formatterPath" = lib.getExe pkgs.alejandra;
           "nix.serverSettings" = {
-            nixd.formatting.command = [
-              "nix"
-              "fmt"
-              "--"
-              "--stdin"
-              "stdin.nix"
-            ];
+            nixd.formatting.command = [(lib.getExe pkgs.alejandra)];
           };
           "[nix]" = {
             "editor.defaultFormatter" = "jnoortheen.nix-ide";
