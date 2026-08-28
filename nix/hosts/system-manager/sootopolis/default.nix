@@ -11,6 +11,7 @@
 
   config.flake.systemConfigs.sootopolis = inputs.system-manager.lib.makeSystemConfig {
     modules = [
+      self.systemModules.autoUpgrade
       self.systemModules.systemManager
       self.systemModules.sootopolis
     ];

@@ -10,11 +10,12 @@
       inputs.determinate.nixosModules.default
       inputs.disko.nixosModules.disko
       inputs.sops-nix.nixosModules.sops
+      self.nixosModules.aly
+      self.nixosModules.comin
       self.nixosModules.default
+      self.nixosModules.niri
       self.nixosModules.nixos
       self.nixosModules.pacifidlog
-      self.nixosModules.aly
-      self.nixosModules.niri
       self.nixosModules.tailscale
       self.nixosModules.thermald
       self.nixosModules.wireguardHoenn

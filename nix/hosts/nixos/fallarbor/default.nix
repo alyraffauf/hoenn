@@ -10,6 +10,7 @@
       inputs.determinate.nixosModules.default
       inputs.disko.nixosModules.disko
       inputs.sops-nix.nixosModules.sops
+      self.nixosModules.comin
       self.nixosModules.cosmic
       self.nixosModules.default
       self.nixosModules.dustin

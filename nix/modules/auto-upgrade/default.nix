@@ -1,4 +1,4 @@
-_: let
+{lib, ...}: let
   autoUpgrade = flakeReference: {
     enable = true;
     dates = "02:00";
@@ -23,8 +23,20 @@ _: let
     };
   };
 in {
-  flake = {
-    nixosModules.default = {config, ...}: {
+  options.flake = {
+    darwinModules.autoUpgrade = lib.mkOption {
+      type = lib.types.deferredModule;
+      default = {};
+    };
+
+    systemModules.autoUpgrade = lib.mkOption {
+      type = lib.types.deferredModule;
+      default = {};
+    };
+  };
+
+  config.flake = {
+    nixosModules.autoUpgrade = {config, ...}: {
       system.autoUpgrade =
         (autoUpgrade "github:alyraffauf/hoenn#${config.networking.hostName}")
         // {
@@ -36,7 +48,7 @@ in {
       systemd.services = upgradeService "nixos-upgrade";
     };
 
-    darwinModules.default = {
+    darwinModules.autoUpgrade = {
       config,
       lib,
       ...
@@ -78,7 +90,7 @@ in {
       };
     };
 
-    systemModules.default = {
+    systemModules.autoUpgrade = {
       system.autoUpgrade = autoUpgrade "github:alyraffauf/hoenn#systemConfigs.sootopolis";
       systemd.services = upgradeService "system-manager-upgrade";
     };
