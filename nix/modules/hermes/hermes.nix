@@ -33,6 +33,20 @@
 
         settings = {
           browser.cloud_provider = "browserbase";
+          display.interface = "tui";
+          stt = {
+            enabled = true;
+            local.model = "base";
+            openai.model = "whisper-1";
+            provider = "openai";
+          };
+          tts = {
+            elevenlabs = {
+              model_id = "eleven_flash_v2_5";
+              voice_id = "EST9Ui6982FZPSi7gCHi";
+            };
+            provider = "elevenlabs";
+          };
           web.backend = "firecrawl";
         };
       };
