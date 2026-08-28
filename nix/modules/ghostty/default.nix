@@ -17,9 +17,12 @@ _: {
           font-family = "CaskaydiaCove Nerd Font";
         }
         // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
-          gtk-titlebar-style = "tabs";
-          window-theme = "dark";
+          # gtk-titlebar-style = "tabs";
+          window-theme = "ghostty";
           linux-cgroup = "always";
+          keybind = ["ctrl+shift+backquote=toggle_tab_overview"];
+          window-show-tab-bar = "never";
+          window-decoration = false;
         }
         // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
           background-blur = true;
