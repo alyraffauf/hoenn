@@ -1,12 +1,29 @@
 {inputs, ...}: {
   flake = {
     homeModules.hermesAgent = {
-      imports = [inputs.hermes-agent.homeManagerModules.default];
+      config,
+      self,
+      ...
+    }: {
+      imports = [
+        inputs.hermes-agent.homeManagerModules.default
+        inputs.sops-nix.homeManagerModules.sops
+      ];
+
+      sops = {
+        age.keyFile = "/home/aly/.config/sops/age/keys.txt";
+
+        secrets.hermes = {
+          key = "env";
+          sopsFile = self + "/secrets/hermes.yaml";
+        };
+      };
 
       programs.hermes-agent.enable = true;
 
       services.hermes-agent = {
         enable = true;
+        environmentFiles = [config.sops.secrets.hermes.path];
         gateway.enable = true;
 
         backend = {
