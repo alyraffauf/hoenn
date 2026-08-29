@@ -13,8 +13,8 @@
         inputs.sops-nix.nixosModules.sops
         self.nixosModules.aly
         self.nixosModules.comin
+        self.nixosModules.cosmic
         self.nixosModules.default
-        self.nixosModules.gnome
         self.nixosModules.google-chrome
         self.nixosModules.homebrew
         self.nixosModules.mauville
