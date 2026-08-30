@@ -36,11 +36,12 @@ output "Guangxi Century Innovation Display Electronics Co., Ltd 27C1U-D 00000000
     mode "3840x2160@60.000"
     scale 1.87
     transform "normal"
+    focus-at-startup
 }
 
 output "AU Optronics 0x233D Unknown" {
     mode "1920x1080@60.049"
-    scale 1.2
+    scale 1.33
     transform "normal"
 }
 
