@@ -6,6 +6,7 @@
     ":dependencyDashboard",
     "helpers:pinGitHubActionDigests"
   ],
+  "timezone": "America/New_York",
   "labels": ["dependencies"],
   "platformAutomerge": true,
 
@@ -23,7 +24,8 @@
 
   "lockFileMaintenance": {
     "enabled": true,
-    "automerge": true
+    "automerge": true,
+    "schedule": ["before 4am on the first day of the month"]
   },
 
   "packageRules": [
@@ -43,7 +45,13 @@
       "automerge": false
     },
     {
-      "description": "Lock file maintenance updates FlakeHub inputs",
+      "description": "Update each declared flake input and its lock entries independently",
+      "matchManagers": ["nix"],
+      "groupName": null,
+      "automerge": true
+    },
+    {
+      "description": "Ignore FlakeHub inputs because Renovate cannot resolve their references",
       "matchManagers": ["nix"],
       "matchPackageNames": ["/^https:\\/\\/flakehub\\.com\\/f\\//"],
       "enabled": false
