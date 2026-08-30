@@ -338,14 +338,15 @@
       "locked": {
         "lastModified": 1787341630,
         "narHash": "sha256-LGGnqJH919hu3YKK0hC/3vsl3Glya4bbEoW7Lbok3gc=",
+        "owner": "DeterminateSystems",
+        "repo": "determinate",
         "rev": "b484316129e0089e28077f4ede85ac4dbd4b842f",
-        "revCount": 435,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/DeterminateSystems/determinate/3.22.2/01a025df-f652-7701-a0cd-4f1373154572/source.tar.gz"
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/DeterminateSystems/determinate/%2A"
+        "owner": "DeterminateSystems",
+        "repo": "determinate",
+        "type": "github"
       }
     },
     "determinate-nixd-aarch64-darwin": {
