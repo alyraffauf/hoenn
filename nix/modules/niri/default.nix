@@ -34,11 +34,7 @@ _: {
       };
 
       services = {
-        displayManager.noctalia-greeter = {
-          enable = true;
-          settings.session.default = "Niri";
-        };
-
+        displayManager.noctalia-greeter.enable = true;
         gvfs.enable = true;
         iio-niri.enable = true;
       };

@@ -4,14 +4,8 @@ import { parse, type Node } from "@bgotink/kdl/v1-compat";
 import { resolve } from "node:path";
 
 const repositoryRoot = resolve(import.meta.dir, "..");
-const configPath = resolve(
-  repositoryRoot,
-  "nix/shared/features/niri/config.kdl",
-);
-const outputPath = resolve(
-  repositoryRoot,
-  "nix/shared/features/niri/README.md",
-);
+const configPath = resolve(repositoryRoot, "nix/modules/niri/config.kdl");
+const outputPath = resolve(repositoryRoot, "nix/modules/niri/README.md");
 const checkOnly = Bun.argv.slice(2).includes("--check");
 
 type Keybinding = {

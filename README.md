@@ -67,11 +67,13 @@ nix build .#systemConfigs.sootopolis
 # Refresh the generated NixOS host hardware documentation.
 nix run github:alyraffauf/infra#generate-host-readmes
 
-# Generate the Niri keyboard reference after changing config.kdl.
+# Generate the keyboard references after changing a compositor config.
 bun scripts/generate-niri-keybindings.ts
+bun scripts/generate-sway-keybindings.ts
 
-# Check that the committed Niri reference is current.
+# Check that the committed keyboard references are current.
 bun scripts/generate-niri-keybindings.ts --check
+bun scripts/generate-sway-keybindings.ts --check
 
 # Discover repository maintenance recipes.
 just

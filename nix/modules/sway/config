@@ -1,0 +1,186 @@
+set $mod Mod4
+font pango:Adwaita Sans 10
+
+output "Guangxi Century Innovation Display Electronics Co., Ltd 27C1U-D 0000000000001" mode 3840x2160@60Hz scale 1.87 transform normal
+output "AU Optronics 0x233D Unknown" mode 1920x1080@60.049Hz scale 1.25 transform normal
+output "Samsung Display Corp. 0x41AA Unknown" mode 2880x1800@120.001Hz scale 2 transform normal adaptive_sync on
+
+input type:keyboard {
+    xkb_options ctrl:nocaps
+}
+
+input type:touchpad {
+    tap enabled
+    dwt enabled
+    dwtp enabled
+    natural_scroll enabled
+    scroll_method two_finger
+    click_method clickfinger
+}
+
+input type:touch {
+    map_to_output eDP-1
+}
+
+input type:pointer {
+    natural_scroll enabled
+}
+
+seat * xcursor_theme Adwaita 24
+focus_follows_mouse always
+focus_wrapping no
+mouse_warping none
+floating_modifier $mod normal
+
+gaps inner 8
+default_border pixel 2
+default_floating_border pixel 2
+
+# Launcher
+bindsym $mod+t exec ghostty
+bindsym $mod+d exec noctalia msg panel-toggle launcher
+bindsym $mod+space exec vicinae open
+bindsym $mod+s exec noctalia msg screenshot-region
+bindsym Mod4+Mod1+l exec noctalia msg session lock
+
+# Media keys
+bindsym --locked XF86AudioRaiseVolume exec noctalia msg volume-up 5
+bindsym --locked XF86AudioLowerVolume exec noctalia msg volume-down 5
+bindsym --locked XF86AudioMute exec noctalia msg volume-mute
+bindsym --locked XF86AudioMicMute exec noctalia msg mic-mute
+bindsym --locked XF86AudioPlay exec noctalia msg media toggle
+bindsym --locked XF86AudioStop exec noctalia msg media stop
+bindsym --locked XF86AudioPrev exec noctalia msg media previous
+bindsym --locked XF86AudioNext exec noctalia msg media next
+bindsym --locked XF86MonBrightnessUp exec noctalia msg brightness-up 5
+bindsym --locked XF86MonBrightnessDown exec noctalia msg brightness-down 5
+
+# Window focus
+bindsym $mod+o exec noctalia msg window-switcher open
+bindsym $mod+q kill
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Window movement
+bindsym $mod+Ctrl+Left move left
+bindsym $mod+Ctrl+Down move down
+bindsym $mod+Ctrl+Up move up
+bindsym $mod+Ctrl+Right move right
+bindsym $mod+Ctrl+h move left
+bindsym $mod+Ctrl+j move down
+bindsym $mod+Ctrl+k move up
+bindsym $mod+Ctrl+l move right
+
+# Output focus
+bindsym $mod+Shift+Left focus output left
+bindsym $mod+Shift+Down focus output down
+bindsym $mod+Shift+Up focus output up
+bindsym $mod+Shift+Right focus output right
+bindsym $mod+Shift+h focus output left
+bindsym $mod+Shift+j focus output down
+bindsym $mod+Shift+k focus output up
+bindsym $mod+Shift+l focus output right
+
+# Move a container to another output
+bindsym $mod+Shift+Ctrl+Left move container to output left
+bindsym $mod+Shift+Ctrl+Down move container to output down
+bindsym $mod+Shift+Ctrl+Up move container to output up
+bindsym $mod+Shift+Ctrl+Right move container to output right
+bindsym $mod+Shift+Ctrl+h move container to output left
+bindsym $mod+Shift+Ctrl+j move container to output down
+bindsym $mod+Shift+Ctrl+k move container to output up
+bindsym $mod+Shift+Ctrl+l move container to output right
+
+# Workspace focus
+bindsym $mod+Page_Down workspace next
+bindsym $mod+Page_Up workspace prev
+bindsym $mod+u workspace next
+bindsym $mod+i workspace prev
+
+# Move a container to another workspace
+bindsym $mod+Ctrl+Page_Down move container to workspace next
+bindsym $mod+Ctrl+Page_Up move container to workspace prev
+bindsym $mod+Ctrl+u move container to workspace next
+bindsym $mod+Ctrl+i move container to workspace prev
+
+bindgesture swipe:3:up workspace next
+bindgesture swipe:3:down workspace prev
+
+# Workspaces by index
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+Ctrl+1 move container to workspace $workspace1
+bindsym $mod+Ctrl+2 move container to workspace $workspace2
+bindsym $mod+Ctrl+3 move container to workspace $workspace3
+bindsym $mod+Ctrl+4 move container to workspace $workspace4
+bindsym $mod+Ctrl+5 move container to workspace $workspace5
+bindsym $mod+Ctrl+6 move container to workspace $workspace6
+bindsym $mod+Ctrl+7 move container to workspace $workspace7
+bindsym $mod+Ctrl+8 move container to workspace $workspace8
+bindsym $mod+Ctrl+9 move container to workspace $workspace9
+
+# Wheel navigation
+bindsym $mod+button4 workspace prev
+bindsym $mod+button5 workspace next
+bindsym $mod+Ctrl+button4 move container to workspace prev
+bindsym $mod+Ctrl+button5 move container to workspace next
+bindsym $mod+Shift+button4 focus left
+bindsym $mod+Shift+button5 focus right
+bindsym $mod+Ctrl+Shift+button4 move left
+bindsym $mod+Ctrl+Shift+button5 move right
+
+# Sizing
+bindsym $mod+r resize set width 50 ppt
+bindsym $mod+Shift+r resize set width 33 ppt
+bindsym $mod+Ctrl+Shift+r resize set height 50 ppt
+bindsym $mod+Ctrl+r resize set height 100 ppt
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
+bindsym $mod+minus resize shrink width 10 ppt
+bindsym $mod+equal resize grow width 10 ppt
+bindsym $mod+Shift+minus resize shrink height 10 ppt
+bindsym $mod+Shift+equal resize grow height 10 ppt
+
+# Floating and tabbed layouts
+bindsym $mod+v floating toggle
+bindsym $mod+Shift+v focus mode_toggle
+bindsym $mod+w layout toggle tabbed splith splitv
+
+# Screenshots
+bindsym Print exec noctalia msg screenshot-region
+bindsym Ctrl+Print exec noctalia msg screenshot-fullscreen
+
+# Session
+bindswitch --locked lid:on exec noctalia msg session lock-and-suspend
+bindsym $mod+Escape shortcuts_inhibitor toggle
+bindsym $mod+Shift+e exit
+bindsym Ctrl+Mod1+Delete exit
+
+for_window [app_id="dev.noctalia.Noctalia"] floating enable, resize set 1080 920
+for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, sticky enable
+
+exec noctalia
+exec vicinae server
