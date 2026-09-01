@@ -11,6 +11,7 @@
       inputs.disko.nixosModules.disko
       inputs.sops-nix.nixosModules.sops
       self.nixosModules.aly
+      self.nixosModules.comin
       self.nixosModules.default
       self.nixosModules.google-chrome
       self.nixosModules.homebrew
