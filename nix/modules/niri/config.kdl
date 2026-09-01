@@ -301,3 +301,5 @@ spawn-at-startup "vicinae" "server"
 debug {
     honor-xdg-activation-with-invalid-serial
 }
+
+include optional=true "~/.config/niri/config.kdl"

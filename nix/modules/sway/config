@@ -184,3 +184,5 @@ for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, stic
 
 exec noctalia
 exec vicinae server
+
+include ~/.config/sway/config
