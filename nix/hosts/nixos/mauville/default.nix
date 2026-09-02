@@ -13,12 +13,12 @@
         inputs.sops-nix.nixosModules.sops
         self.nixosModules.aly
         self.nixosModules.comin
-        self.nixosModules.cosmic
         self.nixosModules.default
         self.nixosModules.google-chrome
         self.nixosModules.homebrew
         self.nixosModules.mauville
         self.nixosModules.nixos
+        self.nixosModules.sway
         self.nixosModules.tailscale
         self.nixosModules.wireguardHoenn
         self.nixosModules.zen
