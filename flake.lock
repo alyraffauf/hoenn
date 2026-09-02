@@ -476,11 +476,11 @@
         "whichKeyNvim": "whichKeyNvim"
       },
       "locked": {
-        "lastModified": 1788123189,
-        "narHash": "sha256-yi1nbg1jyo5JQGVW/lKJi0R3gfP9IHQXgEqGNG/wZ9A=",
+        "lastModified": 1788317740,
+        "narHash": "sha256-7GPo6rD7Y6qZd6v8QFH9dYTSADIV0f3H+FMhQ8tlZGg=",
         "owner": "alyraffauf",
         "repo": "eevee",
-        "rev": "3a0f1c7daa4668e3d45c6e77535f836f76ebebef",
+        "rev": "de55a71daf1aef557938b0202ec26d93d27491bd",
         "type": "github"
       },
       "original": {
@@ -629,11 +629,11 @@
         "nixpkgs-lib": "nixpkgs-lib_2"
       },
       "locked": {
-        "lastModified": 1787559586,
-        "narHash": "sha256-onL0VLf9vPllmT0H/OlURIU5r5t5WIEl7t4tVNKT0Nw=",
+        "lastModified": 1788306937,
+        "narHash": "sha256-lbrI1UYVpFgKSsyrU9oeF7FHfnu8nLD9ja0ou9f2rxk=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "9d0d87172c374f89da73c1cfe6d81ae62feac1f1",
+        "rev": "f16b25b8c3d2809b87925d0b76652d7821a75c68",
         "type": "github"
       },
       "original": {
@@ -906,11 +906,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1788144763,
-        "narHash": "sha256-Y06vvqx4hC4k5wHhamn2FV1aDLbCN4OrM2UBRuPnZ4Q=",
+        "lastModified": 1788324239,
+        "narHash": "sha256-bRwz1+QgopiECb13SugH4VFlLIuTZoLTIipDWghuX+Q=",
         "owner": "NousResearch",
         "repo": "hermes-agent",
-        "rev": "ff3835a630deb1f03054806d91ae5712b76f16d1",
+        "rev": "4e3feb8bbb0a0484e2725bb5ee8accb961540404",
         "type": "github"
       },
       "original": {
@@ -967,11 +967,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787866736,
-        "narHash": "sha256-HPBDLe/UXZe0Ci0hWeBiiKmN+lDDAPZRTxWsKivTFas=",
+        "lastModified": 1788205622,
+        "narHash": "sha256-v+200x/s+WYQC7AZJ55arEQ4oCT4zwFFUiiogObdogs=",
         "owner": "alyraffauf",
         "repo": "home-manager",
-        "rev": "75351131081207182105c16c7e6123dc046d320c",
+        "rev": "9b76fd9eafe2df314264ce8644198f2aaecbe65a",
         "type": "github"
       },
       "original": {
@@ -1015,11 +1015,11 @@
     },
     "import-tree_2": {
       "locked": {
-        "lastModified": 1784254960,
-        "narHash": "sha256-iI88R3wHz8wTKQb5orvpc51L/Xr64AJyxid/0MKa/b8=",
+        "lastModified": 1788275959,
+        "narHash": "sha256-doeyg/EY8joBaZhELfVrSGjAm6pFtp2p0UgQv/Wwgh0=",
         "owner": "denful",
         "repo": "import-tree",
-        "rev": "4ebb10ae17d5f1ad366e7aef5b92cb8eecf24f69",
+        "rev": "e9177dd0d600162a6410ea6019c796cff7a636c3",
         "type": "github"
       },
       "original": {
@@ -1382,11 +1382,11 @@
     },
     "nixpkgs-lib_2": {
       "locked": {
-        "lastModified": 1785031560,
-        "narHash": "sha256-OmshNvn2vupOFpYinLUu+1Dnpu4n7Q5N3ggGVNHpkUI=",
+        "lastModified": 1788057806,
+        "narHash": "sha256-DTQSMxzDWmT0zhguthvegnVkn7CFqGCv4IHCzk5ZUpM=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "0e79af5e3d4dcfcd676ab5ba3f95d2e3352e078c",
+        "rev": "596e2e3940e09b2abbeb03f75fa1828c57fcd72c",
         "type": "github"
       },
       "original": {
@@ -1456,11 +1456,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1788039129,
-        "narHash": "sha256-pa4Q0qErvCvzCaaUph7Sm37RhR4xvPrYI8Lgz6k85+A=",
+        "lastModified": 1788179007,
+        "narHash": "sha256-hn1oU2rue2SYK8dAr8+WNZWtbsz1S2W5mnHlSEuh3bo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d2f67949798825fe853f7c5d0492b8bf016d3f88",
+        "rev": "34ab99075ac4f7e40cf037eef32cb1c360bb85e9",
         "type": "github"
       },
       "original": {
@@ -2102,11 +2102,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1788124847,
-        "narHash": "sha256-Sj+MeGIrUkEt3BJmg+altdeX+RzGbttLiHESdIKcWHg=",
+        "lastModified": 1788312321,
+        "narHash": "sha256-mHp6gcupKk3MFH0r3+Q/2g96GdXAS29KLVBMRJj6vTc=",
         "ref": "refs/heads/master",
-        "rev": "359d6ed6be4f6548ca6c27494cee83758541bd3e",
-        "revCount": 144,
+        "rev": "9de52ec69d0aac231750e8207a83aff5567907b6",
+        "revCount": 156,
         "type": "git",
         "url": "https://tangled.org/aly.codes/tg"
       },
