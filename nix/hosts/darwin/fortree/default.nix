@@ -14,7 +14,7 @@
       modules = [
         self.darwinModules.fortree
         inputs.sops-nix.darwinModules.sops
-        self.darwinModules.autoUpgrade
+        self.darwinModules.comin
         self.darwinModules.default
         self.darwinModules.darwin
         self.darwinModules.aly
