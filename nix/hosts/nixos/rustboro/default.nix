@@ -18,7 +18,6 @@
       self.nixosModules.niri
       self.nixosModules.nixos
       self.nixosModules.rustboro
-      self.nixosModules.sway
       self.nixosModules.tailscale
       self.nixosModules.thermald
       self.nixosModules.wireguardHoenn

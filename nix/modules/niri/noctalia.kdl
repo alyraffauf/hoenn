@@ -1,0 +1,31 @@
+binds {
+    // Noctalia
+    Mod+D hotkey-overlay-title="Open App Launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+S hotkey-overlay-title="Take a Screenshot" { spawn "noctalia" "msg" "screenshot-region"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "noctalia" "msg" "session" "lock"; }
+
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn "noctalia" "msg" "volume-up" "5"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn "noctalia" "msg" "volume-down" "5"; }
+    XF86AudioMute         allow-when-locked=true { spawn "noctalia" "msg" "volume-mute"; }
+    XF86AudioMicMute      allow-when-locked=true { spawn "noctalia" "msg" "mic-mute"; }
+    XF86AudioPlay         allow-when-locked=true { spawn "noctalia" "msg" "media" "toggle"; }
+    XF86AudioStop         allow-when-locked=true { spawn "noctalia" "msg" "media" "stop"; }
+    XF86AudioPrev         allow-when-locked=true { spawn "noctalia" "msg" "media" "previous"; }
+    XF86AudioNext         allow-when-locked=true { spawn "noctalia" "msg" "media" "next"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia" "msg" "brightness-up" "5"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down" "5"; }
+}
+
+switch-events {
+    lid-close {
+        spawn "noctalia" "msg" "session" "lock-and-suspend"
+    }
+}
+
+// Floating Noctalia settings window.
+window-rule {
+    match app-id="dev.noctalia.Noctalia"
+    open-floating true
+    default-column-width { fixed 1080; }
+    default-window-height { fixed 920; }
+}

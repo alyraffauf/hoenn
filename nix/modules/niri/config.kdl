@@ -59,22 +59,7 @@ binds {
     // Launcher
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
-    Mod+D hotkey-overlay-title="Open App Launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     Mod+Space hotkey-overlay-title="Open Vicinae" { spawn "vicinae" "open"; }
-    Mod+S hotkey-overlay-title="Take a Screenshot" { spawn "noctalia" "msg" "screenshot-region"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "noctalia" "msg" "session" "lock"; }
-
-    // Media keys
-    XF86AudioRaiseVolume  allow-when-locked=true { spawn "noctalia" "msg" "volume-up" "5"; }
-    XF86AudioLowerVolume  allow-when-locked=true { spawn "noctalia" "msg" "volume-down" "5"; }
-    XF86AudioMute         allow-when-locked=true { spawn "noctalia" "msg" "volume-mute"; }
-    XF86AudioMicMute      allow-when-locked=true { spawn "noctalia" "msg" "mic-mute"; }
-    XF86AudioPlay         allow-when-locked=true { spawn "noctalia" "msg" "media" "toggle"; }
-    XF86AudioStop         allow-when-locked=true { spawn "noctalia" "msg" "media" "stop"; }
-    XF86AudioPrev         allow-when-locked=true { spawn "noctalia" "msg" "media" "previous"; }
-    XF86AudioNext         allow-when-locked=true { spawn "noctalia" "msg" "media" "next"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia" "msg" "brightness-up" "5"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down" "5"; }
 
     // Overview
     Mod+O repeat=false { toggle-overview; }
@@ -221,13 +206,6 @@ binds {
     Ctrl+Alt+Delete { quit; }
 }
 
-// https://niri-wm.github.io/niri/Configuration:-Switch-Events
-switch-events {
-    lid-close {
-        spawn "noctalia" "msg" "session" "lock-and-suspend"
-    }
-}
-
 // https://niri-wm.github.io/niri/Configuration:-Layout
 layout {
     gaps 8
@@ -256,14 +234,6 @@ layout {
 }
 
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules
-// Floating Noctalia settings window.
-window-rule {
-    match app-id="dev.noctalia.Noctalia"
-    open-floating true
-    default-column-width { fixed 1080; }
-    default-window-height { fixed 920; }
-}
-
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
@@ -294,12 +264,9 @@ prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-spawn-at-startup "noctalia"
 spawn-at-startup "vicinae" "server"
 
 // https://niri-wm.github.io/niri/Configuration:-Debug-Options
 debug {
     honor-xdg-activation-with-invalid-serial
 }
-
-include optional=true "~/.config/niri/config.kdl"
