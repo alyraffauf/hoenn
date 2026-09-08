@@ -18,6 +18,7 @@
         imports = [
           self.homeModules.aly
           self.homeModules.ghostty
+          self.homeModules.vesktop
           self.homeModules.zed-editor
           self.homeModules.vscode
           self.homeModules.opencodeDesktop
