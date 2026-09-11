@@ -7,6 +7,10 @@ _: {
     syncthingCert = config.sops.secrets.syncthing-cert.path;
     syncthingKey = config.sops.secrets.syncthing-key.path;
   in {
+    systemd.tmpfiles.rules = [
+      "d /mnt/Storage/ROMs 0755 aly users -"
+    ];
+
     sops.secrets = {
       syncthing-cert = {
         sopsFile = self + "/secrets/syncthing-mauville.yaml";
