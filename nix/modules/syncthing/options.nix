@@ -115,7 +115,7 @@ _: {
           type = folderType {
             path = "~/ROMs";
             id = "emudeck";
-            devices = ["pacifidlog" "petalburg"];
+            devices = ["mauville" "pacifidlog" "petalburg"];
             ignorePatterns = ["androidapps" "emulators"];
           };
 

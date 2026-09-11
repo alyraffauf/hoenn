@@ -30,7 +30,10 @@ _: {
         key = syncthingKey;
 
         folders = {
-          roms.enable = false;
+          roms = {
+            enable = true;
+            path = "/mnt/Storage/ROMs";
+          };
           sync.enable = true;
         };
       };
