@@ -15,6 +15,7 @@ my production services, see [sinnoh](https://github.com/alyraffauf/sinnoh).
 | [`fallarbor`](nix/hosts/nixos/fallarbor/README.md)   | NixOS          | `nixosConfigurations.fallarbor`  |
 | [`mauville`](nix/hosts/nixos/mauville/README.md)     | NixOS          | `nixosConfigurations.mauville`   |
 | [`pacifidlog`](nix/hosts/nixos/pacifidlog/README.md) | NixOS          | `nixosConfigurations.pacifidlog` |
+| [`petalburg`](nix/hosts/nixos/petalburg/README.md)   | NixOS          | `nixosConfigurations.petalburg`  |
 | [`rustboro`](nix/hosts/nixos/rustboro/README.md)     | NixOS          | `nixosConfigurations.rustboro`   |
 | [`sootopolis`](nix/hosts/nixos/sootopolis/README.md) | NixOS          | `nixosConfigurations.sootopolis` |
 | [`fortree`](nix/hosts/darwin/fortree/README.md)      | nix-darwin     | `darwinConfigurations.fortree`   |
@@ -29,11 +30,7 @@ Tailscale modules connect hosts to the networks they need.
 ```text
 nix/
 ├── hosts/  Per-host composition and hardware state
-├── nixos/  Shared NixOS modules and features
-├── darwin/  Shared nix-darwin modules
-├── homes/  Home Manager modules
-├── system-manager/  Shared system-manager modules
-├── deployments.nix  blzrd deployment targets
+├── modules/  feature modules for NixOS, nix-darwin, Home Manager, and system-manager
 ├── devShells.nix  Development tools
 └── treefmt.nix  Formatting and linting configuration
 keys/  Public SSH keys used as age recipients
@@ -84,12 +81,22 @@ plus NixOS, nix-darwin, and system-manager outputs.
 
 ## NixOS Deployments
 
-`nix/deployments.nix` currently registers Mauville as the flake's `blzrd` node.
-From the development shell, build and deploy that node with:
+`nix/hosts/nixos/mauville/default.nix` and
+`nix/hosts/nixos/petalburg/default.nix` register the `mauville` and `petalburg`
+`blzrd` nodes. build the affected host before deploying it:
 
 ```bash
-blzrd switch mauville # Activate Mauville and set its boot default
-blzrd boot mauville   # Set Mauville's boot default without activating it
+nix build .#nixosConfigurations.mauville.config.system.build.toplevel
+nix build .#nixosConfigurations.petalburg.config.system.build.toplevel
+```
+
+from the development shell, name the node to deploy:
+
+```bash
+blzrd switch mauville  # activate mauville and set its boot default
+blzrd switch petalburg # activate petalburg and set its boot default
+blzrd boot mauville    # set mauville's boot default without activating it
+blzrd boot petalburg   # set petalburg's boot default without activating it
 ```
 
 Run `nix flake check` and build the affected configuration first. Supplying no
@@ -110,7 +117,7 @@ just sops-rekey               # Update recipients after keys/ changes
 Commit `.sops.yaml` and all re-encrypted files together after changing a public
 key in `keys/`.
 
-See the [Niri keyboard reference](nix/shared/features/niri/README.md) for the
+See the [Niri keyboard reference](nix/modules/niri/README.md) for the
 configured desktop shortcuts.
 
 See [AGENTS.md](AGENTS.md) for contribution and validation guidelines. This
