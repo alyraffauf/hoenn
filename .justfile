@@ -11,11 +11,6 @@ _default:
     @printf '\033[1;33mUsage:\033[0m just <recipe> [args...]\n\n'
     @just --list --list-heading $'Available recipes:\n\n'
 
-# Generate {ci,edconfig} files
-[group('flake')]
-gen target:
-    nix run .#{{ if target == "ci" { "render-workflows" } else if target == "edconfig" { "gen-files" } else { error("unknown target: " + target) } }}
-
 # Update flake inputs
 [group('flake')]
 update *inputs:
@@ -23,7 +18,7 @@ update *inputs:
 
 # Update all nixpkgs inputs
 [group('flake')]
-update-nixpkgs: (update "nixpkgs" "nixpkgs-unstable-small")
+update-nixpkgs: (update "nixpkgs")
 
 ############################################################################
 #
@@ -49,8 +44,8 @@ sops-bootstrap:
     echo "this machine's age recipient (must be in .sops.yaml):"
     ssh-to-age -i ~/.ssh/id_ed25519.pub
 
-# Regenerate .sops.yaml from keys/*.pub, then re-encrypt every
-# secrets/*.yaml. Run after adding or removing a .pub file.
+# regenerate .sops.yaml from keys/*.pub, then re-encrypt yaml secrets
+# under secrets/. run after adding or removing a .pub file.
 [group('secrets')]
 sops-rekey:
     #!/usr/bin/env bash
@@ -95,8 +90,9 @@ sops-rekey:
     } > .sops.yaml
     echo "regenerated .sops.yaml"
     shopt -s globstar
-    for f in secrets/**/*.yaml secrets/*.yaml; do
-        if [[ "$(sops filestatus "$f")" == *'"encrypted":true'* ]]; then
+    for f in secrets/**/*.yaml secrets/**/*.yml; do
+        status=$(sops filestatus "$f")
+        if [[ "$status" == *'"encrypted":true'* ]]; then
             echo "rekeying $f"
             sops updatekeys -y "$f"
         fi
@@ -104,8 +100,14 @@ sops-rekey:
 
 # Edit a sops-encrypted secrets file. Usage: just sops-edit tailscale.yaml
 [group('secrets')]
+[positional-arguments]
 sops-edit FILE:
-    sops secrets/{{FILE}}
+    #!/usr/bin/env bash
+    set -euo pipefail
+    case "$1" in
+        secrets/*) sops "$1" ;;
+        *) sops "secrets/$1" ;;
+    esac
 
 ############################################################################
 #
