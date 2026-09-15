@@ -1,4 +1,4 @@
-# ❄️ hoenn
+# hoenn
 
 Declarative configuration for my personal machines. Hoenn uses a flake-parts
 Nix flake to compose NixOS, nix-darwin, Home Manager, and system-manager configurations,
@@ -25,7 +25,7 @@ NixOS hardware discovery is captured with nixos-facter, disk layouts are
 declared with Disko, and SOPS manages encrypted secrets. Shared WireGuard and
 Tailscale modules connect hosts to the networks they need.
 
-## Repository Layout
+## Repository layout
 
 ```text
 nix/
@@ -43,79 +43,39 @@ scripts/  Repository maintenance utilities
 declares or extends a flake output, so new modules do not need to be added to a
 central import list.
 
-## Development
+## Work locally
 
-Enter the pinned toolchain with `nix develop`, or run `direnv allow` to load it
-automatically. The shell includes Bun, Just, `nh`, SOPS, `ssh-to-age`, and
-`blzrd`. Useful commands from the repository root include:
+Enter the pinned development shell with `nix develop`, or use `direnv allow`
+to load it automatically. From the repository root:
 
-```bash
-# Format Nix, YAML, Markdown, TypeScript, and shell files.
+```sh
 nix fmt
-
-# Evaluate the flake and run its configured checks.
 nix flake check
-
-# Build configurations without activating them.
-nix build .#nixosConfigurations.mauville.config.system.build.toplevel
-nix build .#darwinConfigurations.fortree.config.system.build.toplevel
-nix build .#systemConfigs.sootopolis
-
-# Refresh the generated NixOS host hardware documentation.
-nix run github:alyraffauf/infra#generate-host-readmes
-
-# Generate the keyboard references after changing a compositor config.
-bun scripts/generate-niri-keybindings.ts
-bun scripts/generate-sway-keybindings.ts
-
-# Check that the committed keyboard references are current.
-bun scripts/generate-niri-keybindings.ts --check
-bun scripts/generate-sway-keybindings.ts --check
-
-# Discover repository maintenance recipes.
-just
 ```
 
-CI evaluates the complete flake and separately builds the development shell
-plus NixOS, nix-darwin, and system-manager outputs.
+Run `just` to list maintenance commands. See [AGENTS.md](AGENTS.md) for checks
+specific to your change, generated files, and secret maintenance.
 
-## NixOS Deployments
+## Deployment
 
-`nix/hosts/nixos/mauville/default.nix` and
-`nix/hosts/nixos/petalburg/default.nix` register the `mauville` and `petalburg`
-`blzrd` nodes. build the affected host before deploying it:
+`blzrd` deploys `mauville` and `petalburg`. For example:
 
-```bash
-nix build .#nixosConfigurations.mauville.config.system.build.toplevel
-nix build .#nixosConfigurations.petalburg.config.system.build.toplevel
+```sh
+blzrd switch mauville
 ```
 
-from the development shell, name the node to deploy:
-
-```bash
-blzrd switch mauville  # activate mauville and set its boot default
-blzrd switch petalburg # activate petalburg and set its boot default
-blzrd boot mauville    # set mauville's boot default without activating it
-blzrd boot petalburg   # set petalburg's boot default without activating it
-```
-
-Run `nix flake check` and build the affected configuration first. Supplying no
-node name targets every registered node, so name the intended node explicitly
-to keep the command safe as the deployment set grows.
+`switch` activates the configuration and sets the boot default. `boot` sets
+the boot default without activating it. Deployment checks and precautions are
+in [AGENTS.md](AGENTS.md#deploy-deliberately).
 
 ## Secrets
 
-Secrets are encrypted with SOPS for the recipients declared in `.sops.yaml`.
-Never commit decrypted values or private keys.
+SOPS encrypts secrets for the recipients in `.sops.yaml`. Public keys live in
+`keys/`. To edit a host secret from the development shell:
 
-```bash
-just sops-bootstrap           # Install this machine's age key once
-just sops-edit tailscale.yaml # Edit an encrypted secret
-just sops-rekey               # Update recipients after keys/ changes
+```sh
+just sops-edit tailscale.yaml
 ```
-
-Commit `.sops.yaml` and all re-encrypted files together after changing a public
-key in `keys/`.
 
 See the [Niri keyboard reference](nix/modules/niri/README.md) for the
 configured desktop shortcuts.
